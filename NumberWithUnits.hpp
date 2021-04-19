@@ -9,8 +9,10 @@ using namespace std;
 namespace ariel{
     
     class NumberWithUnits{
+        private:
+            double number;
+            string unit;
         
-    
         public:
             NumberWithUnits(double num,const char* ch);
        
@@ -25,7 +27,7 @@ namespace ariel{
         friend NumberWithUnits operator-= (const NumberWithUnits& n1,const NumberWithUnits& n2);
         friend NumberWithUnits operator- (const NumberWithUnits& n1,const NumberWithUnits& n2);
 
-        friend NumberWithUnits operator *(NumberWithUnits& n1,double d);
+        friend NumberWithUnits operator *(const NumberWithUnits& n1,double d);
         friend NumberWithUnits operator *(double d,NumberWithUnits& n1);
         
         
