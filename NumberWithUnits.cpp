@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-#include <sstream>
-
 #include <string>
 
 
@@ -15,9 +13,9 @@ namespace ariel{
     
     
 
-    NumberWithUnits::NumberWithUnits(double num,const char* ch){
+    NumberWithUnits::NumberWithUnits(double num,const string str){
         this->number=num;
-        this->unit=ch;
+        this->unit=str;
     }
 
 
@@ -31,7 +29,7 @@ namespace ariel{
 
     // onary
     NumberWithUnits operator+ (const NumberWithUnits& n1){
-        return n;
+        return n1;
     }
 
     // return n1 after changes
@@ -44,7 +42,7 @@ namespace ariel{
 
     // onary
     NumberWithUnits operator- (const NumberWithUnits& n1){
-        return n;
+       return NumberWithUnits (n1.number*-1,n1.unit);
     }
 
     // return n1 after changes
@@ -56,11 +54,11 @@ namespace ariel{
     }
 
     NumberWithUnits operator *(const NumberWithUnits& n1,double d){
-        return n;
+        return NumberWithUnits (n1.number *d,n1.unit);
     }
             
     NumberWithUnits operator *(double d, NumberWithUnits& n1){
-        return n;
+        return NumberWithUnits (n1.number *d,n1.unit);
     }
             
 
@@ -85,22 +83,25 @@ namespace ariel{
 
      // // // // prefix and postfix 
         // ++x
-        NumberWithUnits operator++(const NumberWithUnits& n1){
-             
-            // return NumberWithUnits ans(n1.number+1,n1.unit);
+        NumberWithUnits operator++(NumberWithUnits& n1){
+              
+            return NumberWithUnits (++n1.number,n1.unit);
         }
         // x++
-        NumberWithUnits operator++(const NumberWithUnits& n1,int num){
-            return n;
+        NumberWithUnits operator++(NumberWithUnits& n1,int num){
+            
+            return NumberWithUnits (n1.number++,n1.unit);
+            
         } 
         
          // --x
-        NumberWithUnits operator--(const NumberWithUnits& n1){
-            return n;
+        NumberWithUnits operator--(NumberWithUnits& n1){
+            return NumberWithUnits (--n1.number,n1.unit);
         }
+
         // x--
-        NumberWithUnits operator--(const NumberWithUnits& n1,int num){
-            return n;
+        NumberWithUnits operator--(NumberWithUnits& n1,int num){
+            return NumberWithUnits (n1.number--,n1.unit);
         }
      // // // // // //  input and output 
         std::ostream& operator << (std::ostream& out,const NumberWithUnits& n1){

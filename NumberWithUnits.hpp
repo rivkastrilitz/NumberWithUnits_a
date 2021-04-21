@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <string>
+
 #include <fstream>
 
 
@@ -14,7 +14,7 @@ namespace ariel{
             string unit;
         
         public:
-            NumberWithUnits(double num,const char* ch);
+            NumberWithUnits(double num,const string str);
        
         static void read_units(ifstream& units);
 
@@ -43,14 +43,14 @@ namespace ariel{
 
         // // // // prefix and postfix 
         // ++x
-        friend NumberWithUnits operator++(const NumberWithUnits& n1);
+        friend NumberWithUnits operator++(NumberWithUnits& n1);
         // x++
-        friend NumberWithUnits operator++(const NumberWithUnits& n1,int); 
+        friend NumberWithUnits operator++(NumberWithUnits& n1,int); 
         
-         // --x
-        friend NumberWithUnits operator--(const NumberWithUnits& n1);
+        // --x
+        friend NumberWithUnits operator--( NumberWithUnits& n1);
         // x--
-        friend NumberWithUnits operator--(const NumberWithUnits& n1,int); 
+        friend NumberWithUnits operator--( NumberWithUnits& n1,int); 
 
         // // // // // //  input and output 
         friend ostream& operator << (ostream& out,const NumberWithUnits& n1);
